@@ -11,13 +11,16 @@ and orders.cid = customers.cid
 and customers.name = 'Tiptop';
 
 --Q2
-select products.aid
-from products
-	left join orders
-	     on products.aid=orders.pid
-	left join customers
-	     on customers.cid=orders.cid
-where customers.city='Kyoto'
+select distinct orders2.pid
+from customers, 
+     agents,
+     orders orders1, 
+     orders orders2
+where orders1.aid = agents.aid
+and orders1.cid=customers.cid
+and orders2.aid=agents.aid
+and customers.city = 'Kyoto'
+order by pid asc;
 
 --Q3
 select name
