@@ -38,7 +38,7 @@ on customers.cid = orders.cid
 where orders.cid is null
 order by customers.name asc
 
---Q5
+/*--Q5
 select customers.name as "customer_name", agents.name as "agent_name"
 from customers,
      orders,
@@ -46,7 +46,7 @@ from customers,
 where customers.cid = orders.cid
   and agents.aid = orders.aid
   and customers.city = agents.city
-order by "customer_name" asc
+order by "customer_name" asc*/
 
 --Q6
 select customers.name as "customer_name", agents.name as "agent_name",customers.city
@@ -55,9 +55,9 @@ from customers,
 where customers.city = agents.city
 order by "customer_name" asc
 
---Q7
+/*--Q7
 select city, sum(quantity) as "sum_quantity"
 from products
 group by city
 order by sum_quantity asc
-limit 1
+limit 1*/
