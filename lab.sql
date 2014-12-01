@@ -38,15 +38,14 @@ on customers.cid = orders.cid
 where orders.cid is null
 order by customers.name asc
 
-/*--Q5
-select customers.name as "customer_name", agents.name as "agent_name"
-from customers,
-     orders,
-     agents
-where customers.cid = orders.cid
-  and agents.aid = orders.aid
-  and customers.city = agents.city
-order by "customer_name" asc*/
+--Q5
+select distinct a.name 
+as Agent, c.name 
+as Customer
+from orders o, agents a, customers c
+where a.city = c.city 
+	and o.cid = c.cid
+	and o.aid = a.aid;
 
 --Q6
 select customers.name as "customer_name", agents.name as "agent_name",customers.city
