@@ -61,7 +61,7 @@ inner join orders o
 on o.cid=c.cid
 inner join products p
 on o.pid=p.pid
-where c.city in (select city 
+where c.city in(select city 
 		 from products
 		 group by city
 		 order by count(quantity)
