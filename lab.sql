@@ -54,9 +54,18 @@ from customers,
 where customers.city = agents.city
 order by "customer_name" asc
 
-/*--Q7
-select city, sum(quantity) as "sum_quantity"
-from products
-group by city
-order by sum_quantity asc
-limit 1*/
+--Q7
+select distinct c.name, c.city
+from customers c
+inner join orders o
+on o.cid=c.cid
+inner join products p
+on o.pid=p.pid
+where c.city in (select city 
+		 from products
+		 group by city
+		 order by count(quantity)
+		 limit1)
+		 
+
+
